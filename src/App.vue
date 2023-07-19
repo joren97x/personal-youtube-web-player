@@ -5,11 +5,11 @@
     import {ref} from 'vue'
 
     const videos = ref([])
-    const query = ref('')
+    const query = ref('batman')
     const currentVideo = ref(null)
 
     async function getVideos() {
-        axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${query.value}&key=AIzaSyC9dPlfG7B7lZs59bTsGJq_eEUm-jcNERc`)
+        await axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${query.value}&key=AIzaSyC9dPlfG7B7lZs59bTsGJq_eEUm-jcNERc`)
         .then(response => {
             console.log(response.data.items)
             videos.value = response.data.items
@@ -18,6 +18,13 @@
             console.log(error)
         })
     }
+
+    window.onload = async () => {
+        await getVideos()
+        currentVideo.value = videos.value[0] // HOW DO I SET THE CURRENTVIDEO TO THE FIRST ELEMENT OF VIDEOS
+        query.value = ''
+        
+    } 
     
 
 </script>
