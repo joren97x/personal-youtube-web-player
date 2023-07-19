@@ -7,9 +7,10 @@
     const videos = ref([])
     const query = ref('batman')
     const currentVideo = ref(null)
+    const key = '' //YOUR API KEY
 
     async function getVideos() {
-        await axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${query.value}&key=AIzaSyC9dPlfG7B7lZs59bTsGJq_eEUm-jcNERc`)
+        await axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${query.value}&key=${key}`)
         .then(response => {
             console.log(response.data.items)
             videos.value = response.data.items
