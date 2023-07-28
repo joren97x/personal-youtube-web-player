@@ -5,9 +5,9 @@
     import {ref} from 'vue'
 
     const videos = ref([])
-    const query = ref('batman')
+    const query = ref('new jeans super shy audio')
     const currentVideo = ref(null)
-    const key = '' //YOUR API KEY
+    const key = 'AIzaSyC9dPlfG7B7lZs59bTsGJq_eEUm-jcNERc' //YOUR API KEY
 
     async function getVideos() {
         await axios.get(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${query.value}&key=${key}`)
@@ -35,6 +35,14 @@
         <v-main>
             <v-container>
                 <v-text-field label="Search" @keyup.enter="getVideos" v-model="query">
+
+                    <template v-slot:append-inner>
+                        <v-fade-transition>
+                            <v-btn icon="mdi-close" size="x-small" flat v-show="query" @click="query = ''">
+
+                            </v-btn>
+                        </v-fade-transition>
+                    </template>
 
                 </v-text-field>
                 <v-row>
