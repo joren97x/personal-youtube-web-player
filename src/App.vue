@@ -46,7 +46,7 @@
 
                 </v-text-field>
                 <v-row>
-                    <v-col cols="8" v-if="currentVideo">
+                    <v-col cols="12" md="8" v-if="currentVideo">
                         <iframe width="100%" height="450" :src="'https://www.youtube.com/embed/'+currentVideo.id.videoId">
                         
                             <template v-slot:placeholder>
@@ -72,7 +72,7 @@
                             </v-col>
                         </v-row>
                     </v-col>
-                    <v-col cols="4" class="mt-4" >
+                    <v-col cols="12" md="4" class="mt-4" >
                         <v-row v-for="video in videos" :key="video" @click="currentVideo = video">
                             <v-col cols="6">
                                 <v-img :src="video.snippet.thumbnails.medium.url">
